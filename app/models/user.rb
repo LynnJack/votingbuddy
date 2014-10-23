@@ -4,4 +4,11 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   has_many :friends
+
+
+    url = 'https://www.googleapis.com/civicinfo/v2/voterinfo'
+
+    response = HTTParty.get(url)
+
+
 end
