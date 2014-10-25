@@ -6,16 +6,34 @@
         <% for friendship in @user.friendships %>
             <li>
             </li>
-
   </ul>
 
   <p>Enter address to find Polling Place</p>
 
+  <form>
+  <div class="row">
+    <div class="large-6 columns">
+      <label>Enter your address
+        <input type="text" placeholder="Your address" />
+      </label>
+    </div>
+  </div>
+</form>
+
+<%= form_for @user do |f| %>
+    <%= f.label :Enter_your_address %>
+    <%= f.text_field :name %>
+
+    <%= f.submit "Submit" %>
+<% end %>
+
+<p>Here is the polling place for the address you entered:</p>
+
+<%= @user.polling_location %>
+<% end %>
+
+<p>Polling Hours</p>
+
+<%= @user.polling_Hours %>
+<% end %>
   
-
-
-
-
-
-
-

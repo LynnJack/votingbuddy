@@ -17,16 +17,15 @@ class User < ActiveRecord::Base
             api_key = 'AIzaSyDpPTxbDor3UbG1Nan3Wob-1q_LhYlhLkE'
             # This gets the large Ruby hash response from api
             response = HTTParty.get(url, query: {address: self.address, key: api_key})
+      
+            # response is a ruby hash; a is reaching in to get the address
+            a = response['pollingLocations'][0]['address']
 
-            polling_address = response['pollingLocations'][0]['address']['locationName'] + ' '  + response['pollingLocations'][0]['address']['line1'] + ' '+ response['pollingLocations'][0]['address']['city'] + ' '  + response['pollingLocations'][0]['address']['state'] + '  ' +response['pollingLocations'][0]['address']['zip']
+            polling_address = a['locationName'] + ' '  + a['line1'] + ' '+ a['city'] + ' '  + a['state'] + '  ' +a['zip']
             polling_hours = response['pollingLocations'][0]['pollingHours']
 
 
-            if  response['pollingLocations'] == nil
-                :flash notice "Polling Location not found."
-            else
-                render 
-                return response['pollingLocations'][0]['address']
-            end
+           
+              
       end
 end

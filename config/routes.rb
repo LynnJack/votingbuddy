@@ -1,7 +1,13 @@
 Rails.application.routes.draw do
   devise_for :users
   # Defining root_url
-  root 'users#index'
+  root 'pages#index'
+
+  resources :users
+  resources :pages
+
+
+  get 'users/:id' => 'users#show'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
