@@ -1,39 +1,42 @@
-<h1>My Profile</h1>
+<h1>My Profile</h>
 
-  <h2>My Voting Buddy</h2>
+<h2>My Voting Buddy</h2>
 
-  <ul>
-        <% for friendship in @user.friendships %>
-            <li>
-            </li>
-  </ul>
+<ul>
+    <% for friendship in @user.friendships %>
+        <li><%= friendship.friend.username %></li>
+    <% end %>
+</ul>
 
-  <p>Enter address to find Polling Place</p>
 
-  <form>
-  <div class="row">
-    <div class="large-6 columns">
-      <label>Enter your address
-        <input type="text" placeholder="Your address" />
-      </label>
-    </div>
-  </div>
-</form>
 
+<h3> Enter your home address to find your polling location: 
+<% if !current_user.address? %>
 <%= form_for @user do |f| %>
     <%= f.label :Enter_your_address %>
-    <%= f.text_field :name %>
-
+    <%= f.text_field :address, placeholder: "Example:  12345 Main St., Santa Monica, CA  90401" %>
     <%= f.submit "Submit" %>
-<% end %>
+    <% end %> 
+<% end %> 
 
-<p>Here is the polling place for the address you entered:</p>
+
+
+<p>Here is the polling place and hours for the address you entered:</p>
 
 <%= @user.polling_location %>
-<% end %>
+<%= @user.polling_hours %>
 
-<p>Polling Hours</p>
 
-<%= @user.polling_Hours %>
-<% end %>
+Send your Voting Buddy a reminder to vote at the next election.
+
+Enter your Voting Buddies phone number:
+
+
+
+
+
+
+
+
+
   

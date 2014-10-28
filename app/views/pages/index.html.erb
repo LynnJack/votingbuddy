@@ -4,6 +4,12 @@
 <h1><strong>VOTING BUDDY</strong></h1>
 <h2>Because the Political Process is not a Spectator Sport</h2>
 
+<%= form_for :user do |f| %>
+<%= f.text_area :text, class: 'text' %>
+<%= f.submit "Submit", class: 'button' %>
+<% end %>
+
+
 
 <%#= link_to "Add Voting Buddy", friendships_path(friend_id => user), :method => :post %> 
 
