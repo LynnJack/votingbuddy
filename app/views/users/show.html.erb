@@ -2,6 +2,21 @@
 
 <h2>My Voting Buddy</h2>
 
+
+  <h2>Voters List</h2>
+    <div>
+          <% for user in @users %>
+              <p><%= user.email %>
+              <%= link_to "Add Voting Buddy", friendships_path(:friend_id => user), :method => :post %>
+              <p>
+          <% end %>
+    </div>
+
+
+
+
+
+
 <ul>
     <% for friendship in @user.friendships %>
         <li><%= friendship.friend.username %></li>
