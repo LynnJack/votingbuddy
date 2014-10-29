@@ -1,32 +1,33 @@
-<h1>My Profile</h>
+<h1><%= current_user.name %>'s Profile</h>
 
 <h2>My Voting Buddy</h2>
 
+<%#= current_user.friends.first.email %>
 
-
-
+<ul>
+  <% for friend in current_user.friends %>
+      <li><%= current_user.friends.first.name %></li>
+  <% end %>
+</ul>
 
   <h2>Voters List</h2>
     <div>
           <% for user in @users %>
-              <p><%= user.email %>
+              <p><%= user.name %>
               <%= link_to "Add Voting Buddy", friendships_path(:friend_id => user), :method => :post %>
               <p>
           <% end %>
     </div>
 
 
-
 <% if !current_user.address? %>
 <h3> Enter your home address to find your polling location: 
-
-<%= form_for @user do |f| %>
-    <%= f.label :Enter_your_address %>
-    <%= f.text_field :address, placeholder: "Example:  12345 Main St., Santa Monica, CA  90401" %>
-    <%= f.submit "Submit" %>
+    <%= form_for @user do |f| %>
+        <%= f.label :Enter_your_address %>
+        <%= f.text_field :address, placeholder: "Example:  12345 Main St., Santa Monica, CA  90401" %>
+        <%= f.submit "Submit" %>
     <% end %> 
 <% end %> 
-
 
 
 <p>Here is the polling place and hours for the address you entered:</p>
@@ -34,9 +35,12 @@
 <%= @user.polling_location %>
 <%= @user.polling_hours %>
 
-
-
 <p>Send your Voting Buddy a reminder to vote at the next election.</p>
+
+    <%= form_for :user do |f| %>
+        <%= f.text_area :email, class: 'text' %>
+        <%= f.submit "Submit", class: 'button' %>
+    <% end %>
 
 <p>Enter your Voting Buddies phone number:</p>
 

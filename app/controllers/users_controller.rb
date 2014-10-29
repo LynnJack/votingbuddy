@@ -10,7 +10,7 @@ class UsersController < ApplicationController
       end
 
      def create
-        @user = User.new(params.require(:user).permit(:email, :password))
+        @user = User.new(user_params)
         if @user.save
           redirect_to root_url
         else
@@ -28,7 +28,7 @@ class UsersController < ApplicationController
 
       def update
             @user = User.find(params[:id])
-            if @user.update_attributes(params.require(:user).permit(:address))
+            if @user.update_attributes(params.require(:user).permit(:address, :name))
                 @user.save
                   if @user.address
                       @user.api_call
@@ -39,6 +39,11 @@ class UsersController < ApplicationController
             end
       end
 
+      private
+
+      def user_params
+        params.require(:user).permit(:email, :password, :name)
+      end
           # if  response['pollingLocations'] == nil
           # else flash[:notice] = "Polling Location not found for this address."
 end

@@ -26,6 +26,8 @@ has_many :friends, class_name: "User", through: :friendships, foreign_key: "frie
 
       end
 
+      
+
 end
 
 

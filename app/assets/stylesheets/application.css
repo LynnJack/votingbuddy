@@ -15,7 +15,12 @@
  *= require foundation_and_overrides
 
  */
-
+.splashbg {
+  background-image: url("voteimage.jpg");
+  height: 100%;
+  width: 100%;
+  background-size: cover;
+}
 
 .text {
   height: 50px;
