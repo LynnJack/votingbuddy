@@ -25,4 +25,9 @@ has_many :friends, class_name: "User", through: :friendships, foreign_key: "frie
             self.update_attributes!(polling_location: polling_address, polling_hours: polling_hours)
 
       end
+
 end
+
+
+
+

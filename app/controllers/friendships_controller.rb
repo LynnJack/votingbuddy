@@ -3,7 +3,8 @@ class FriendshipsController < ApplicationController
     def create
         @friendship = current_user.friendships.build(:friend_id => params[:friend_id])
         if @friendship.save
-            redirect_to root_url
+            # redirect_to root_url
+            redirect_to user_path(current_user)
         end
     end
 
