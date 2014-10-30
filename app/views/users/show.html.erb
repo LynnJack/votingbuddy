@@ -9,9 +9,10 @@
       <li><%= current_user.friends.first.name %></li>
   <% end %>
 </ul>
+<div>
 
-  <h2>Voters List</h2>
-    <div>
+
+  <h2>Select Your Voting Buddy:</h2>
           <% for user in @users %>
               <p><%= user.name %>
               <%= link_to "Add Voting Buddy", friendships_path(:friend_id => user), :method => :post %>
@@ -30,22 +31,21 @@
 <% end %> 
 
 
-<p>Here is the polling place and hours for the address you entered:</p>
+<p><strong>Here is the polling place and hours for the address you entered:</strong></p>
 
 <%= @user.polling_location %>
 <%= @user.polling_hours %>
 
 <p>Send your Voting Buddy a reminder to vote at the next election.</p>
 
-    <%= form_for :user do |f| %>
-        <%= f.text_area :email, class: 'text' %>
+    <%= form_for :user, url: messages_path, method: :post do |f| %>
+        <%= f.text_area :text, class: 'text' %>
         <%= f.submit "Submit", class: 'button' %>
     <% end %>
 
-<p>Enter your Voting Buddies phone number:</p>
 
 
 
 
 
-  
+

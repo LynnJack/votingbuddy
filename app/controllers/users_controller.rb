@@ -29,10 +29,7 @@ class UsersController < ApplicationController
       def update
             @user = User.find(params[:id])
             if @user.update_attributes(params.require(:user).permit(:address, :name))
-                @user.save
-                  if @user.address
-                      @user.api_call
-                  end
+
                 redirect_to user_path(@user)
             else
                 render 'edit'

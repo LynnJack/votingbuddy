@@ -15,6 +15,14 @@ gem 'httparty'
 gem 'figaro'
 # Twilio API
 gem 'twilio-ruby'
+# rspec-rails gem for TDD
+group :development, :test do
+  gem 'rspec-rails', '~> 3.0.0'
+end
+
+group :test do
+  gem 'shoulda-matchers', require: false
+end
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
 # Use Uglifier as compressor for JavaScript assets
