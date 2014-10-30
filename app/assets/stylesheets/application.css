@@ -15,7 +15,7 @@
  *= require foundation_and_overrides
 
  */
-@import url(http://fonts.googleapis.com/css?family=Raleway);
+
 .splashbg {
   background-image: url("voteimage.jpg");
   height: 100%;
