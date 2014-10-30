@@ -7,7 +7,7 @@
 <h2>
 <ul>
   <% for friend in current_user.friends %>
-      <li><%= current_user.friends.first.name %></li>
+      <li class="friend"><%= current_user.friends.first.name %></li>
   <% end %>
 </ul>
 </h2>
@@ -17,8 +17,8 @@
   
   <h2>Select Your Voting Buddy:</h2>
           <% for user in @users %>
-              <p><%= user.name %>
-              <%= link_to "Add Voting Buddy", friendships_path(:friend_id => user), :method => :post %>
+              <p class="friend"><%= user.name %>
+              <%= link_to "Add Voting Buddy", friendships_path(:friend_id => user), :method => :post, class: "link"%>
               <p>
           <% end %>
   
