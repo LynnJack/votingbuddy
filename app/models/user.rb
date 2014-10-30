@@ -4,12 +4,12 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-has_many :friendships
-has_many :friends, class_name: "User", through: :friendships, foreign_key: "friend_id"
+  has_many :friendships
+  has_many :friends, class_name: "User", through: :friendships, foreign_key: "friend_id"
 
-validates :name, presence: true
+  validates :name, presence: true
 
-before_update :saving_polling_info, if: :address?
+  before_update :saving_polling_info, if: :address?
 
       def api_call
             
@@ -19,10 +19,7 @@ before_update :saving_polling_info, if: :address?
             response = HTTParty.get(url, query: {address: self.address, key: api_key})
       
             # response is a ruby hash; a is reaching in to get the address
-            a = response['pollingLocations']#
-
-            # 
-            # 
+            a = response['pollingLocations']
 
             # self.update_attributes!(polling_location: polling_address, polling_hours: polling_hours)
 
@@ -42,9 +39,6 @@ before_update :saving_polling_info, if: :address?
           self.polling_location = self.polling_address_reformat
           self.polling_hours = self.polling_hours_reformat
       end
-
-
-
 
 end
 

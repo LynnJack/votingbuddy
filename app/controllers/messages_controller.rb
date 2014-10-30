@@ -8,10 +8,10 @@ class MessagesController < ApplicationController
  
       message = @client.account.messages.create(
           :body => text,
-          :to => '+1',
+          :to => '+14153598189',
           :from => ENV['TWILIO_PHONE'])
           
-      redirect_to root_path
+      redirect_to :back
 
     end
 

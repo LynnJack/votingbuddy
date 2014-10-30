@@ -1,24 +1,28 @@
+<div class="container">
 <h1><%= current_user.name %>'s Profile</h>
 
 <h2>My Voting Buddy</h2>
 
 <%#= current_user.friends.first.email %>
-
+<h2>
 <ul>
   <% for friend in current_user.friends %>
       <li><%= current_user.friends.first.name %></li>
   <% end %>
 </ul>
-<div>
+</h2>
 
 
+
+  
   <h2>Select Your Voting Buddy:</h2>
           <% for user in @users %>
               <p><%= user.name %>
               <%= link_to "Add Voting Buddy", friendships_path(:friend_id => user), :method => :post %>
               <p>
           <% end %>
-    </div>
+  
+    
 
 
 <% if !current_user.address? %>
@@ -40,9 +44,9 @@
 
     <%= form_for :user, url: messages_path, method: :post do |f| %>
         <%= f.text_area :text, class: 'text' %>
-        <%= f.submit "Submit", class: 'button' %>
+        <center><%= f.submit "Submit", class: 'button' %></center>
     <% end %>
-
+</div>
 
 
 
